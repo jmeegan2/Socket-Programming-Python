@@ -7,7 +7,10 @@ PORT = 14000  # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    s.sendall(b"Hello, world")
+    fin = open('index.html')
+    content = fin.read()
+    fin.close()
+    s.sendall(content)
     data = s.recv(1024)
 
 print(f"Received {data!r}")
