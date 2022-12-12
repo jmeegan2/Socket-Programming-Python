@@ -1,16 +1,7 @@
-# echo-client.py
+import http.client
 
-import socket
-
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 14000  # The port used by the server
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    fin = open('index.html')
-    content = fin.read()
-    fin.close()
-    s.sendall(content)
-    data = s.recv(1024)
-
-print(f"Received {data!r}")
+connection = http.clients.HTTPSConnection("http://127.0.0.1:14000/index.html")
+connection.request("GET", "/")
+response = connection.getresponse()
+print("Status: {} and reason {}".format(response.status, response.reason))
+connection.close();

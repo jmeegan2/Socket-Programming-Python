@@ -2,10 +2,7 @@
  Implements a simple HTTP/1.0 Server
 
 """
-
 import socket
-
-
 # Define socket host and port
 SERVER_HOST = '127.0.0.1'
 SERVER_PORT = 14000
